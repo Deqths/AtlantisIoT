@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFDeviceService", "WCFDeviceService\WCFDeviceService.csproj", "{A628CD61-2DFE-4A5B-B4CB-CE1C65486861}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{A47E6D0F-2F72-49A8-863A-524D65AC7E65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A628CD61-2DFE-4A5B-B4CB-CE1C65486861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A628CD61-2DFE-4A5B-B4CB-CE1C65486861}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A628CD61-2DFE-4A5B-B4CB-CE1C65486861}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A628CD61-2DFE-4A5B-B4CB-CE1C65486861}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A47E6D0F-2F72-49A8-863A-524D65AC7E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A47E6D0F-2F72-49A8-863A-524D65AC7E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A47E6D0F-2F72-49A8-863A-524D65AC7E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A47E6D0F-2F72-49A8-863A-524D65AC7E65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0FA0EA6A-8FD8-47F7-8758-08CF3C392778}
+		SolutionGuid = {E1A6809D-634D-404D-8F1C-9306A1794AE3}
 	EndGlobalSection
 EndGlobal
