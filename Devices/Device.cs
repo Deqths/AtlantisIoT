@@ -11,7 +11,7 @@ namespace Devices
     public abstract class Device : INotifyPropertyChanged
     {
         public string id;          // ID Of the Device
-        public string ID { get { return id; } }
+        public string ID { get { return id; }}
         public string name;        // Name of the Device
         public string Name { get { return name; } }
         public string macAddress;  // MAC address of the Device
@@ -19,9 +19,10 @@ namespace Devices
         public string type;        // Type of the Device
         public string Type { get { return type; } }
         public string metric;      // Metrics percieveed (or State for non-sensors)
-        public string Metric { get { return metric; } }
+        public string Metric { get { return metric; } set { metric = value; OnPropertyChanged(Metric);  } }
         public bool sendState;     // Defines if the Device is sending metrics or not
         public bool SendState { get { return sendState; } }
+        protected static Random rand = new Random();
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -67,11 +68,9 @@ namespace Devices
         }
         public void generateMac()
         {
-            Random rand = new Random();
             const string chars = "ABCDEF0123456789";
             for (int i = 0; i < 6; i++)
             {
-                Thread.Sleep(rand.Next(20, 100));
                 string macpart = new string(Enumerable.Repeat(chars, 2).Select(s => s[rand.Next(chars.Length)]).ToArray());
                 macAddress += macpart;
                 if (i != 5)
@@ -83,8 +82,8 @@ namespace Devices
 
         public void generateMetric()
         {
-            Random rand = new Random();
-            metric = "0";
+            metric = rand.Next(0, 100).ToString();
+            OnPropertyChanged(metric);
         }
             
     }

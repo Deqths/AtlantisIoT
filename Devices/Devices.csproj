@@ -76,6 +76,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\AtmPressureSensor.datasource" />
+    <None Include="Properties\DataSources\Beeper.datasource" />
+    <None Include="Properties\DataSources\CO2Sensor.datasource" />
+    <None Include="Properties\DataSources\GpsSensor.datasource" />
+    <None Include="Properties\DataSources\HumiditySensor.datasource" />
+    <None Include="Properties\DataSources\LED.datasource" />
+    <None Include="Properties\DataSources\LightSensor.datasource" />
+    <None Include="Properties\DataSources\PresenceSensor.datasource" />
+    <None Include="Properties\DataSources\SoundLevelSensor.datasource" />
+    <None Include="Properties\DataSources\TemperatureSensor.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -89,8 +99,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

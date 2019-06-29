@@ -150,8 +150,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.humiditySensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.atmPressureSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.atmPressureSensorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.lightSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.temperatureSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.presenceSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.soundLevelSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gpsSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cO2SensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.beeperBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
@@ -163,8 +172,16 @@
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.humiditySensorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.atmPressureSensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.atmPressureSensorBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightSensorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.temperatureSensorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presenceSensorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundLevelSensorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gpsSensorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cO2SensorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lEDBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.beeperBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -269,6 +286,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label102.AutoSize = true;
             this.label102.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label102.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.beeperBindingSource, "ID", true));
             this.label102.Location = new System.Drawing.Point(44, 48);
             this.label102.Margin = new System.Windows.Forms.Padding(0);
             this.label102.Name = "label102";
@@ -299,6 +317,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label104.AutoSize = true;
             this.label104.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label104.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.beeperBindingSource, "Name", true));
             this.label104.Location = new System.Drawing.Point(44, 86);
             this.label104.Margin = new System.Windows.Forms.Padding(0);
             this.label104.Name = "label104";
@@ -329,6 +348,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label106.AutoSize = true;
             this.label106.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label106.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.beeperBindingSource, "Type", true));
             this.label106.Location = new System.Drawing.Point(44, 124);
             this.label106.Margin = new System.Windows.Forms.Padding(0);
             this.label106.Name = "label106";
@@ -359,6 +379,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label108.AutoSize = true;
             this.label108.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label108.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.beeperBindingSource, "Metric", true));
             this.label108.Location = new System.Drawing.Point(44, 162);
             this.label108.Margin = new System.Windows.Forms.Padding(0);
             this.label108.Name = "label108";
@@ -389,6 +410,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label110.AutoSize = true;
             this.label110.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label110.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.beeperBindingSource, "Mac", true));
             this.label110.Location = new System.Drawing.Point(44, 200);
             this.label110.Margin = new System.Windows.Forms.Padding(0);
             this.label110.Name = "label110";
@@ -466,6 +488,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label91.AutoSize = true;
             this.label91.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label91.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lEDBindingSource, "ID", true));
             this.label91.Location = new System.Drawing.Point(41, 48);
             this.label91.Margin = new System.Windows.Forms.Padding(0);
             this.label91.Name = "label91";
@@ -496,6 +519,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label93.AutoSize = true;
             this.label93.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label93.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lEDBindingSource, "Name", true));
             this.label93.Location = new System.Drawing.Point(41, 86);
             this.label93.Margin = new System.Windows.Forms.Padding(0);
             this.label93.Name = "label93";
@@ -526,6 +550,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label95.AutoSize = true;
             this.label95.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label95.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lEDBindingSource, "Type", true));
             this.label95.Location = new System.Drawing.Point(41, 124);
             this.label95.Margin = new System.Windows.Forms.Padding(0);
             this.label95.Name = "label95";
@@ -556,6 +581,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label97.AutoSize = true;
             this.label97.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label97.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lEDBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label97.Location = new System.Drawing.Point(41, 162);
             this.label97.Margin = new System.Windows.Forms.Padding(0);
             this.label97.Name = "label97";
@@ -586,6 +612,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label99.AutoSize = true;
             this.label99.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label99.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lEDBindingSource, "Mac", true));
             this.label99.Location = new System.Drawing.Point(41, 200);
             this.label99.Margin = new System.Windows.Forms.Padding(0);
             this.label99.Name = "label99";
@@ -663,6 +690,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label80.AutoSize = true;
             this.label80.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label80.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cO2SensorBindingSource, "ID", true));
             this.label80.Location = new System.Drawing.Point(41, 48);
             this.label80.Margin = new System.Windows.Forms.Padding(0);
             this.label80.Name = "label80";
@@ -693,6 +721,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label82.AutoSize = true;
             this.label82.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label82.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cO2SensorBindingSource, "Name", true));
             this.label82.Location = new System.Drawing.Point(41, 86);
             this.label82.Margin = new System.Windows.Forms.Padding(0);
             this.label82.Name = "label82";
@@ -723,6 +752,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label84.AutoSize = true;
             this.label84.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label84.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cO2SensorBindingSource, "Type", true));
             this.label84.Location = new System.Drawing.Point(41, 124);
             this.label84.Margin = new System.Windows.Forms.Padding(0);
             this.label84.Name = "label84";
@@ -753,6 +783,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label86.AutoSize = true;
             this.label86.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label86.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cO2SensorBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label86.Location = new System.Drawing.Point(41, 162);
             this.label86.Margin = new System.Windows.Forms.Padding(0);
             this.label86.Name = "label86";
@@ -783,6 +814,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label88.AutoSize = true;
             this.label88.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label88.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cO2SensorBindingSource, "Mac", true));
             this.label88.Location = new System.Drawing.Point(41, 200);
             this.label88.Margin = new System.Windows.Forms.Padding(0);
             this.label88.Name = "label88";
@@ -860,6 +892,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label69.AutoSize = true;
             this.label69.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label69.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gpsSensorBindingSource, "ID", true));
             this.label69.Location = new System.Drawing.Point(41, 48);
             this.label69.Margin = new System.Windows.Forms.Padding(0);
             this.label69.Name = "label69";
@@ -890,6 +923,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label71.AutoSize = true;
             this.label71.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label71.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gpsSensorBindingSource, "Name", true));
             this.label71.Location = new System.Drawing.Point(41, 86);
             this.label71.Margin = new System.Windows.Forms.Padding(0);
             this.label71.Name = "label71";
@@ -920,6 +954,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label73.AutoSize = true;
             this.label73.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label73.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gpsSensorBindingSource, "Type", true));
             this.label73.Location = new System.Drawing.Point(41, 124);
             this.label73.Margin = new System.Windows.Forms.Padding(0);
             this.label73.Name = "label73";
@@ -950,6 +985,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label75.AutoSize = true;
             this.label75.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label75.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gpsSensorBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label75.Location = new System.Drawing.Point(41, 162);
             this.label75.Margin = new System.Windows.Forms.Padding(0);
             this.label75.Name = "label75";
@@ -980,6 +1016,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label77.AutoSize = true;
             this.label77.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label77.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gpsSensorBindingSource, "Mac", true));
             this.label77.Location = new System.Drawing.Point(41, 200);
             this.label77.Margin = new System.Windows.Forms.Padding(0);
             this.label77.Name = "label77";
@@ -1057,6 +1094,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label58.AutoSize = true;
             this.label58.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label58.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.soundLevelSensorBindingSource, "ID", true));
             this.label58.Location = new System.Drawing.Point(41, 48);
             this.label58.Margin = new System.Windows.Forms.Padding(0);
             this.label58.Name = "label58";
@@ -1087,6 +1125,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label60.AutoSize = true;
             this.label60.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label60.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.soundLevelSensorBindingSource, "Name", true));
             this.label60.Location = new System.Drawing.Point(41, 86);
             this.label60.Margin = new System.Windows.Forms.Padding(0);
             this.label60.Name = "label60";
@@ -1117,6 +1156,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label62.AutoSize = true;
             this.label62.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label62.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.soundLevelSensorBindingSource, "Type", true));
             this.label62.Location = new System.Drawing.Point(41, 124);
             this.label62.Margin = new System.Windows.Forms.Padding(0);
             this.label62.Name = "label62";
@@ -1147,6 +1187,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label64.AutoSize = true;
             this.label64.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label64.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.soundLevelSensorBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label64.Location = new System.Drawing.Point(41, 162);
             this.label64.Margin = new System.Windows.Forms.Padding(0);
             this.label64.Name = "label64";
@@ -1177,6 +1218,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label66.AutoSize = true;
             this.label66.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label66.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.soundLevelSensorBindingSource, "Mac", true));
             this.label66.Location = new System.Drawing.Point(41, 200);
             this.label66.Margin = new System.Windows.Forms.Padding(0);
             this.label66.Name = "label66";
@@ -1254,6 +1296,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label47.AutoSize = true;
             this.label47.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label47.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.humiditySensorBindingSource, "ID", true));
             this.label47.Location = new System.Drawing.Point(42, 48);
             this.label47.Margin = new System.Windows.Forms.Padding(0);
             this.label47.Name = "label47";
@@ -1284,6 +1327,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label49.AutoSize = true;
             this.label49.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label49.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.humiditySensorBindingSource, "Name", true));
             this.label49.Location = new System.Drawing.Point(42, 86);
             this.label49.Margin = new System.Windows.Forms.Padding(0);
             this.label49.Name = "label49";
@@ -1314,6 +1358,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label51.AutoSize = true;
             this.label51.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label51.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.humiditySensorBindingSource, "Type", true));
             this.label51.Location = new System.Drawing.Point(42, 124);
             this.label51.Margin = new System.Windows.Forms.Padding(0);
             this.label51.Name = "label51";
@@ -1344,6 +1389,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label53.AutoSize = true;
             this.label53.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label53.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.humiditySensorBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label53.Location = new System.Drawing.Point(42, 162);
             this.label53.Margin = new System.Windows.Forms.Padding(0);
             this.label53.Name = "label53";
@@ -1374,6 +1420,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label55.AutoSize = true;
             this.label55.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label55.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.humiditySensorBindingSource, "Mac", true));
             this.label55.Location = new System.Drawing.Point(42, 200);
             this.label55.Margin = new System.Windows.Forms.Padding(0);
             this.label55.Name = "label55";
@@ -1452,6 +1499,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label36.AutoSize = true;
             this.label36.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label36.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.atmPressureSensorBindingSource, "ID", true));
             this.label36.Location = new System.Drawing.Point(41, 48);
             this.label36.Margin = new System.Windows.Forms.Padding(0);
             this.label36.Name = "label36";
@@ -1482,6 +1530,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label38.AutoSize = true;
             this.label38.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label38.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.atmPressureSensorBindingSource, "Name", true));
             this.label38.Location = new System.Drawing.Point(41, 86);
             this.label38.Margin = new System.Windows.Forms.Padding(0);
             this.label38.Name = "label38";
@@ -1512,6 +1561,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label40.AutoSize = true;
             this.label40.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label40.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.atmPressureSensorBindingSource, "Type", true));
             this.label40.Location = new System.Drawing.Point(41, 124);
             this.label40.Margin = new System.Windows.Forms.Padding(0);
             this.label40.Name = "label40";
@@ -1542,6 +1592,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label42.AutoSize = true;
             this.label42.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label42.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.atmPressureSensorBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label42.Location = new System.Drawing.Point(41, 162);
             this.label42.Margin = new System.Windows.Forms.Padding(0);
             this.label42.Name = "label42";
@@ -1572,6 +1623,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label44.AutoSize = true;
             this.label44.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label44.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.atmPressureSensorBindingSource, "Mac", true));
             this.label44.Location = new System.Drawing.Point(41, 200);
             this.label44.Margin = new System.Windows.Forms.Padding(0);
             this.label44.Name = "label44";
@@ -1649,6 +1701,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
             this.label25.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label25.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lightSensorBindingSource, "ID", true));
             this.label25.Location = new System.Drawing.Point(41, 48);
             this.label25.Margin = new System.Windows.Forms.Padding(0);
             this.label25.Name = "label25";
@@ -1679,6 +1732,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
             this.label27.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label27.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lightSensorBindingSource, "Name", true));
             this.label27.Location = new System.Drawing.Point(41, 86);
             this.label27.Margin = new System.Windows.Forms.Padding(0);
             this.label27.Name = "label27";
@@ -1709,6 +1763,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
             this.label29.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label29.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lightSensorBindingSource, "Type", true));
             this.label29.Location = new System.Drawing.Point(41, 124);
             this.label29.Margin = new System.Windows.Forms.Padding(0);
             this.label29.Name = "label29";
@@ -1739,6 +1794,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label31.AutoSize = true;
             this.label31.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label31.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lightSensorBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label31.Location = new System.Drawing.Point(41, 162);
             this.label31.Margin = new System.Windows.Forms.Padding(0);
             this.label31.Name = "label31";
@@ -1769,6 +1825,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label33.AutoSize = true;
             this.label33.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label33.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lightSensorBindingSource, "Mac", true));
             this.label33.Location = new System.Drawing.Point(41, 200);
             this.label33.Margin = new System.Windows.Forms.Padding(0);
             this.label33.Name = "label33";
@@ -1847,6 +1904,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.temperatureSensorBindingSource, "ID", true));
             this.label14.Location = new System.Drawing.Point(41, 48);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
@@ -1878,6 +1936,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label16.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.temperatureSensorBindingSource, "Name", true));
             this.label16.Location = new System.Drawing.Point(41, 86);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
@@ -1908,6 +1967,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label18.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.temperatureSensorBindingSource, "Type", true));
             this.label18.Location = new System.Drawing.Point(41, 124);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
@@ -1938,6 +1998,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label20.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.temperatureSensorBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label20.Location = new System.Drawing.Point(41, 162);
             this.label20.Margin = new System.Windows.Forms.Padding(0);
             this.label20.Name = "label20";
@@ -1968,6 +2029,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label22.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.temperatureSensorBindingSource, "Mac", true));
             this.label22.Location = new System.Drawing.Point(41, 200);
             this.label22.Margin = new System.Windows.Forms.Padding(0);
             this.label22.Name = "label22";
@@ -2046,6 +2108,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presenceSensorBindingSource, "ID", true));
             this.label3.Location = new System.Drawing.Point(41, 48);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
@@ -2077,6 +2140,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presenceSensorBindingSource, "Name", true));
             this.label5.Location = new System.Drawing.Point(41, 86);
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
@@ -2107,6 +2171,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presenceSensorBindingSource, "Type", true));
             this.label7.Location = new System.Drawing.Point(41, 124);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
@@ -2137,12 +2202,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presenceSensorBindingSource, "Metric", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.label9.Location = new System.Drawing.Point(41, 162);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(160, 37);
             this.label9.TabIndex = 1;
-            this.label9.Text = "label2";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label10
@@ -2167,6 +2232,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.label11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.presenceSensorBindingSource, "Mac", true));
             this.label11.Location = new System.Drawing.Point(41, 200);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
@@ -2175,13 +2241,52 @@
             this.label11.Text = "label2";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // humiditySensorBindingSource
+            // 
+            this.humiditySensorBindingSource.DataSource = typeof(Devices.HumiditySensor);
+            // 
             // atmPressureSensorBindingSource
             // 
             this.atmPressureSensorBindingSource.DataSource = typeof(Devices.AtmPressureSensor);
             // 
-            // atmPressureSensorBindingSource1
+            // lightSensorBindingSource
             // 
-            this.atmPressureSensorBindingSource1.DataSource = typeof(Devices.AtmPressureSensor);
+            this.lightSensorBindingSource.DataSource = typeof(Devices.LightSensor);
+            // 
+            // temperatureSensorBindingSource
+            // 
+            this.temperatureSensorBindingSource.DataSource = typeof(Devices.TemperatureSensor);
+            // 
+            // presenceSensorBindingSource
+            // 
+            this.presenceSensorBindingSource.DataSource = typeof(Devices.PresenceSensor);
+            this.presenceSensorBindingSource.CurrentChanged += new System.EventHandler(this.presenceSensorBindingSource_CurrentChanged);
+            // 
+            // soundLevelSensorBindingSource
+            // 
+            this.soundLevelSensorBindingSource.DataSource = typeof(Devices.SoundLevelSensor);
+            // 
+            // gpsSensorBindingSource
+            // 
+            this.gpsSensorBindingSource.DataSource = typeof(Devices.GpsSensor);
+            // 
+            // cO2SensorBindingSource
+            // 
+            this.cO2SensorBindingSource.DataSource = typeof(Devices.CO2Sensor);
+            // 
+            // lEDBindingSource
+            // 
+            this.lEDBindingSource.DataSource = typeof(Devices.LED);
+            // 
+            // beeperBindingSource
+            // 
+            this.beeperBindingSource.DataSource = typeof(Devices.Beeper);
             // 
             // Form1
             // 
@@ -2213,8 +2318,16 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.humiditySensorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.atmPressureSensorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.atmPressureSensorBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightSensorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.temperatureSensorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.presenceSensorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.soundLevelSensorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gpsSensorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cO2SensorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lEDBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.beeperBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2342,8 +2455,17 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.BindingSource presenceSensorBindingSource;
+        private System.Windows.Forms.BindingSource temperatureSensorBindingSource;
         private System.Windows.Forms.BindingSource atmPressureSensorBindingSource;
-        private System.Windows.Forms.BindingSource atmPressureSensorBindingSource1;
+        private System.Windows.Forms.BindingSource lightSensorBindingSource;
+        private System.Windows.Forms.BindingSource humiditySensorBindingSource;
+        private System.Windows.Forms.BindingSource beeperBindingSource;
+        private System.Windows.Forms.BindingSource lEDBindingSource;
+        private System.Windows.Forms.BindingSource cO2SensorBindingSource;
+        private System.Windows.Forms.BindingSource gpsSensorBindingSource;
+        private System.Windows.Forms.BindingSource soundLevelSensorBindingSource;
     }
 }
 

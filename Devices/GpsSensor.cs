@@ -21,6 +21,7 @@ namespace Devices
         public void generateGPSMetric() {
             Random rand = new Random();
             metric = $"N;{rand.Next(-100, 100)};{rand.Next(-100, 100)};{rand.Next(-100, 100)}.{rand.Next(0, 99)};E;{rand.Next(-100, 100)};{rand.Next(-100, 100)};{rand.Next(-100, 100)}.{rand.Next(0, 99)}";
+            OnPropertyChanged(metric);
         }
     }
 }
