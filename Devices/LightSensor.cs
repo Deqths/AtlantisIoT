@@ -10,7 +10,6 @@ namespace Devices
     {
         public LightSensor()
         {
-            Random rand = new Random();
             id = null;
             name = "LightSensor";
             type = "Light Sensor";

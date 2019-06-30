@@ -10,7 +10,6 @@ namespace Devices
     {
         public CO2Sensor()
         {
-            Random rand = new Random();
             id = null;
             name = "CO2Sensor";
             type = "CO2 Sensor";

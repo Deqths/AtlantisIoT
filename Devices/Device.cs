@@ -1,4 +1,8 @@
-﻿using System;
+﻿using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Client.Options;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,20 +14,32 @@ namespace Devices
 {
     public abstract class Device : INotifyPropertyChanged
     {
-        public string id;          // ID Of the Device
-        public string ID { get { return id; }}
-        public string name;        // Name of the Device
-        public string Name { get { return name; } }
-        public string macAddress;  // MAC address of the Device
+        // ID Of the Device
+        public string id;
+        public string ID { get { return id; } set { id = value; OnPropertyChanged(ID); } }
+        // Name of the Device
+        public string name;        
+        public string Name { get { return name; } set { name = value; OnPropertyChanged(Name); } }
+        // MAC address of the Device
+        public string macAddress;
         public string Mac { get { return macAddress; } }
-        public string type;        // Type of the Device
+        // Type of the Device
+        public string type;        
         public string Type { get { return type; } }
-        public string metric;      // Metrics percieveed (or State for non-sensors)
+        // Metrics percieveed (or State for non-sensors)
+        public string metric;      
         public string Metric { get { return metric; } set { metric = value; OnPropertyChanged(Metric);  } }
-        public bool sendState;     // Defines if the Device is sending metrics or not
-        public bool SendState { get { return sendState; } }
+        // Defines if the Device is sending metrics or not
+        public bool sendState = false;     
+        public bool SendState { get { return sendState; } set { SendState = value; OnPropertyChanged(SendState.ToString()); } }
+        // Defines if the Device is sending metrics or not
+        public bool power = true;     
+        public bool Power { get { return power; } set { power = value; OnPropertyChanged(Power.ToString()); } }
+        // Static Random for all instances
         protected static Random rand = new Random();
 
+
+        // Property change notification handling
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void OnPropertyChanged(string property)
@@ -64,7 +80,7 @@ namespace Devices
         // Stops the process of sending metrics
         public void MetricStop()
         {
-
+            
         }
         public void generateMac()
         {
@@ -76,6 +92,21 @@ namespace Devices
                 if (i != 5)
                 {
                     macAddress += ":";
+                }
+            }
+        }
+
+        public void tick()
+        {
+            if (power)
+            {
+                generateMetric();
+                if (sendState)
+                {
+                    Console.WriteLine("Sending metrics");
+                } else
+                {
+                    Console.WriteLine("Trying to register");
                 }
             }
         }

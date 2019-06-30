@@ -1,4 +1,8 @@
-﻿using System;
+﻿using MQTTnet;
+using MQTTnet.Client;
+using MQTTnet.Client.Options;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,9 +27,10 @@ namespace Devices
         SoundLevelSensor sound = new SoundLevelSensor();
         TemperatureSensor temp = new TemperatureSensor();
 
+        
+
         public Form1()
         {
-
             InitializeComponent();
 
             presenceSensorBindingSource.Add(pre);
@@ -67,7 +72,7 @@ namespace Devices
 
         private void timer1_Tick(object sender, EventArgs e)
         {   
-            atm.generateMetric();
+            atm.tick();
             beep.generateMetric();
             co2.generateMetric();
             gps.generateGPSMetric();
@@ -82,6 +87,10 @@ namespace Devices
         private void presenceSensorBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label34_Click(object sender, EventArgs e)
+        {
         }
     }
 }

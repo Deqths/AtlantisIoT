@@ -10,7 +10,6 @@ namespace Devices
     {
         public LED()
         {
-            Random rand = new Random();
             id = null;
             name = "LED";
             type = "LED";

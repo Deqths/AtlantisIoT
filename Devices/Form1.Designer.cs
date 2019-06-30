@@ -34,6 +34,7 @@
             this.label100 = new System.Windows.Forms.Label();
             this.label101 = new System.Windows.Forms.Label();
             this.label102 = new System.Windows.Forms.Label();
+            this.beeperBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label103 = new System.Windows.Forms.Label();
             this.label104 = new System.Windows.Forms.Label();
             this.label105 = new System.Windows.Forms.Label();
@@ -46,6 +47,7 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label90 = new System.Windows.Forms.Label();
             this.label91 = new System.Windows.Forms.Label();
+            this.lEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label92 = new System.Windows.Forms.Label();
             this.label93 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
@@ -58,6 +60,7 @@
             this.label78 = new System.Windows.Forms.Label();
             this.label79 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
+            this.cO2SensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label81 = new System.Windows.Forms.Label();
             this.label82 = new System.Windows.Forms.Label();
             this.label83 = new System.Windows.Forms.Label();
@@ -70,6 +73,7 @@
             this.label67 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
+            this.gpsSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label70 = new System.Windows.Forms.Label();
             this.label71 = new System.Windows.Forms.Label();
             this.label72 = new System.Windows.Forms.Label();
@@ -82,6 +86,7 @@
             this.label56 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
+            this.soundLevelSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label61 = new System.Windows.Forms.Label();
@@ -94,6 +99,7 @@
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
+            this.humiditySensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
@@ -106,6 +112,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
+            this.atmPressureSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
@@ -118,6 +125,7 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.lightSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -130,6 +138,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.temperatureSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -142,6 +151,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.presenceSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -151,37 +161,27 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.humiditySensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.atmPressureSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lightSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.temperatureSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.presenceSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.soundLevelSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gpsSensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cO2SensorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.lEDBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.beeperBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
-            this.tableLayoutPanel10.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.humiditySensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.atmPressureSensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lightSensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.temperatureSensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.presenceSensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.soundLevelSensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gpsSensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cO2SensorBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lEDBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beeperBindingSource)).BeginInit();
+            this.tableLayoutPanel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lEDBindingSource)).BeginInit();
+            this.tableLayoutPanel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cO2SensorBindingSource)).BeginInit();
+            this.tableLayoutPanel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gpsSensorBindingSource)).BeginInit();
+            this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.soundLevelSensorBindingSource)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.humiditySensorBindingSource)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.atmPressureSensorBindingSource)).BeginInit();
+            this.tableLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lightSensorBindingSource)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.temperatureSensorBindingSource)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.presenceSensorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -294,6 +294,10 @@
             this.label102.TabIndex = 1;
             this.label102.Text = "label2";
             this.label102.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // beeperBindingSource
+            // 
+            this.beeperBindingSource.DataSource = typeof(Devices.Beeper);
             // 
             // label103
             // 
@@ -497,6 +501,10 @@
             this.label91.Text = "label2";
             this.label91.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lEDBindingSource
+            // 
+            this.lEDBindingSource.DataSource = typeof(Devices.LED);
+            // 
             // label92
             // 
             this.label92.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -698,6 +706,10 @@
             this.label80.TabIndex = 1;
             this.label80.Text = "label2";
             this.label80.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cO2SensorBindingSource
+            // 
+            this.cO2SensorBindingSource.DataSource = typeof(Devices.CO2Sensor);
             // 
             // label81
             // 
@@ -901,6 +913,10 @@
             this.label69.Text = "label2";
             this.label69.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // gpsSensorBindingSource
+            // 
+            this.gpsSensorBindingSource.DataSource = typeof(Devices.GpsSensor);
+            // 
             // label70
             // 
             this.label70.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1102,6 +1118,10 @@
             this.label58.TabIndex = 1;
             this.label58.Text = "label2";
             this.label58.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // soundLevelSensorBindingSource
+            // 
+            this.soundLevelSensorBindingSource.DataSource = typeof(Devices.SoundLevelSensor);
             // 
             // label59
             // 
@@ -1305,6 +1325,10 @@
             this.label47.Text = "label2";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // humiditySensorBindingSource
+            // 
+            this.humiditySensorBindingSource.DataSource = typeof(Devices.HumiditySensor);
+            // 
             // label48
             // 
             this.label48.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1476,6 +1500,7 @@
             this.label34.TabIndex = 0;
             this.label34.Text = "Atmospheric Pressure";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label34.Click += new System.EventHandler(this.label34_Click);
             // 
             // label35
             // 
@@ -1507,6 +1532,10 @@
             this.label36.TabIndex = 1;
             this.label36.Text = "label2";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // atmPressureSensorBindingSource
+            // 
+            this.atmPressureSensorBindingSource.DataSource = typeof(Devices.AtmPressureSensor);
             // 
             // label37
             // 
@@ -1709,6 +1738,10 @@
             this.label25.TabIndex = 1;
             this.label25.Text = "label2";
             this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lightSensorBindingSource
+            // 
+            this.lightSensorBindingSource.DataSource = typeof(Devices.LightSensor);
             // 
             // label26
             // 
@@ -1914,6 +1947,10 @@
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
+            // temperatureSensorBindingSource
+            // 
+            this.temperatureSensorBindingSource.DataSource = typeof(Devices.TemperatureSensor);
+            // 
             // label15
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2118,6 +2155,11 @@
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
+            // presenceSensorBindingSource
+            // 
+            this.presenceSensorBindingSource.DataSource = typeof(Devices.PresenceSensor);
+            this.presenceSensorBindingSource.CurrentChanged += new System.EventHandler(this.presenceSensorBindingSource_CurrentChanged);
+            // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -2247,47 +2289,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // humiditySensorBindingSource
-            // 
-            this.humiditySensorBindingSource.DataSource = typeof(Devices.HumiditySensor);
-            // 
-            // atmPressureSensorBindingSource
-            // 
-            this.atmPressureSensorBindingSource.DataSource = typeof(Devices.AtmPressureSensor);
-            // 
-            // lightSensorBindingSource
-            // 
-            this.lightSensorBindingSource.DataSource = typeof(Devices.LightSensor);
-            // 
-            // temperatureSensorBindingSource
-            // 
-            this.temperatureSensorBindingSource.DataSource = typeof(Devices.TemperatureSensor);
-            // 
-            // presenceSensorBindingSource
-            // 
-            this.presenceSensorBindingSource.DataSource = typeof(Devices.PresenceSensor);
-            this.presenceSensorBindingSource.CurrentChanged += new System.EventHandler(this.presenceSensorBindingSource_CurrentChanged);
-            // 
-            // soundLevelSensorBindingSource
-            // 
-            this.soundLevelSensorBindingSource.DataSource = typeof(Devices.SoundLevelSensor);
-            // 
-            // gpsSensorBindingSource
-            // 
-            this.gpsSensorBindingSource.DataSource = typeof(Devices.GpsSensor);
-            // 
-            // cO2SensorBindingSource
-            // 
-            this.cO2SensorBindingSource.DataSource = typeof(Devices.CO2Sensor);
-            // 
-            // lEDBindingSource
-            // 
-            this.lEDBindingSource.DataSource = typeof(Devices.LED);
-            // 
-            // beeperBindingSource
-            // 
-            this.beeperBindingSource.DataSource = typeof(Devices.Beeper);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2300,34 +2301,34 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel11.ResumeLayout(false);
             this.tableLayoutPanel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.beeperBindingSource)).EndInit();
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lEDBindingSource)).EndInit();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cO2SensorBindingSource)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gpsSensorBindingSource)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.soundLevelSensorBindingSource)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.humiditySensorBindingSource)).EndInit();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.atmPressureSensorBindingSource)).EndInit();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lightSensorBindingSource)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.temperatureSensorBindingSource)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.humiditySensorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.atmPressureSensorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lightSensorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.temperatureSensorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.presenceSensorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.soundLevelSensorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gpsSensorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cO2SensorBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lEDBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.beeperBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

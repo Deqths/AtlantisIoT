@@ -10,7 +10,6 @@ namespace Devices
     {
         public SoundLevelSensor()
         {
-            Random rand = new Random();
             id = null;
             name = "SoundLevelSensor";
             type = "SoundLevel Sensor";

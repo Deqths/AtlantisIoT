@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Devices
 {
-    class AtmPressureSensor : Device, INotifyPropertyChanged
+    class AtmPressureSensor : Device
     {
         public AtmPressureSensor()
         {
