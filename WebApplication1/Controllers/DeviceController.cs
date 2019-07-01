@@ -12,11 +12,28 @@ namespace WebApplication1.Controllers
     [Route("v1/Device")]
     public class DeviceController : Controller
     {
+        // GET: v1/Device
+        [HttpGet()]
+        public string get()
+        {
+            httpResponse.ContentType("plain/text");
+            return "Hello2";
+            //add to DB
+            //responses == 200 || 405
+        }
+
         // POST: v1/Device
         [HttpPost]
         public string Post([FromBody]string value)
         {
-            return "hello";
+            Guid guid = new Guid();
+            string name = "testname";
+            string deviceType = "PresenceSensor";
+            string json = "{ \"id\": \"" + guid + "\", " + " \"name\": \"" + name + "\", \"deviceType\": \"" + deviceType + "\" }";
+
+            Response.Clear();
+            Response.ContentType = "application/json";
+            return json;
             //add to DB
             //responses == 200 || 405
         }

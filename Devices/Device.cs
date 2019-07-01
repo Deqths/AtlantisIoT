@@ -5,7 +5,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -59,16 +61,29 @@ namespace Devices
          */
         public bool RegisterDevice()
         {
-            try
+            WebRequest request = WebRequest.Create("http://localhost:59885/v1/device");
+            request.Credentials = CredentialCache.DefaultCredentials;
+            request.ContentType = "application/json";
+            request.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
-                //
-                return true;
+                string json = "{ \"ID\" : \" "+this.id+"\", \"Name\" : \""+name+ "\", \"deviceType\" : \""+type+"\"}";
+
+                streamWriter.Write(json);
+                streamWriter.Flush();
             }
-            catch
+
+            WebResponse response = request.GetResponse();
+            using (var streamReader = new StreamReader(response.GetResponseStream()))
             {
-                //
-                return false;
+                var responseText = streamReader.ReadToEnd();
+                Console.WriteLine(responseText);
+
+                //Now you have your response.
+                //or false depending on information in the response     
             }
+            return true;
         }
 
         // Starts the process of sending metrics
@@ -106,6 +121,7 @@ namespace Devices
                     Console.WriteLine("Sending metrics");
                 } else
                 {
+                    RegisterDevice();
                     Console.WriteLine("Trying to register");
                 }
             }
