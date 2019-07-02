@@ -13,9 +13,9 @@ namespace Devices
     {
         public AtmPressureSensor()
         {
-            id = "try";
-            name = "AtmPressureSensor";
-            type = "AtmPressure Sensor";
+            id = "";
+            name = "";
+            type = Types.atmosphericPressureSensor.ToString();
             metric = "0";
             generateMac();
 

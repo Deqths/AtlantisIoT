@@ -12,7 +12,7 @@ namespace Devices
         {
             id = null;
             name = "PresenceSensor";
-            type = "Presence Sensor";
+            type = Types.presenceSensor.ToString();
             metric = "0";
 
             generateMac();

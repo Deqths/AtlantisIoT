@@ -12,7 +12,7 @@ namespace Devices
         {
             id = null;
             name = "CO2Sensor";
-            type = "CO2 Sensor";
+            type = Types.co2Sensor.ToString();
             metric = "0";
 
             generateMac();

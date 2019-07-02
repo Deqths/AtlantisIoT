@@ -12,7 +12,7 @@ namespace Devices
         {
             id = null;
             name = "LightSensor";
-            type = "Light Sensor";
+            type = Types.brightnessSensor.ToString();
             metric = "0";
 
             generateMac();

@@ -12,7 +12,7 @@ namespace Devices
         {
             id = null;
             name = "GpsSensor";
-            type = "GPS Sensor";
+            type = Types.gpsSensor.ToString();
 
             generateGPSMetric();
             generateMac();

@@ -12,7 +12,7 @@ namespace Devices
         {
             id = null;
             name = "TemperatureSensor";
-            type = "Temperature Sensor";
+            type = Types.temperatureSensor.ToString();
             metric = "0";
 
             generateMac();

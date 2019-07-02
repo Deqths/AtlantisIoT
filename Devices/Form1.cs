@@ -71,17 +71,18 @@ namespace Devices
         }
 
         private void timer1_Tick(object sender, EventArgs e)
-        {   
+        {
+            beep.tick();
+            led.tick();
+
             atm.tick();
-            beep.generateMetric();
-            co2.generateMetric();
-            gps.generateGPSMetric();
-            hum.generateMetric();
-            led.generateMetric();
-            light.generateMetric();
-            pre.generateMetric();
-            sound.generateMetric();
-            temp.generateMetric();
+            co2.tick();
+            gps.tick();
+            hum.tick();
+            light.tick();
+            pre.tick();
+            sound.tick();
+            temp.tick();
         }
 
         private void presenceSensorBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -91,6 +92,43 @@ namespace Devices
 
         private void label34_Click(object sender, EventArgs e)
         {
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SendTimer.Start();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            SendTimer.Stop();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            atm.RegisterDevice();
+            beep.RegisterDevice();
+            co2.RegisterDevice();
+            gps.RegisterDevice();
+            hum.RegisterDevice();
+            led.RegisterDevice();
+            light.RegisterDevice();
+            pre.RegisterDevice();
+            sound.RegisterDevice();
+            temp.RegisterDevice();
+        }
+
+        private void MetricsTimer_Tick(object sender, EventArgs e)
+        {
+            
+            atm.generateMetric();
+            co2.generateMetric();
+            gps.generateGPSMetric();
+            hum.generateMetric();
+            light.generateMetric();
+            pre.generateMetric();
+            sound.generateMetric();
+            temp.generateMetric();
         }
     }
 }

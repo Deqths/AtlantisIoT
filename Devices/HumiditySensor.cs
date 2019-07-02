@@ -12,7 +12,7 @@ namespace Devices
         {
             id = null;
             name = "HumiditySensor";
-            type = "Humidity Sensor";
+            type = Types.humiditySensor.ToString();
             metric = "0";
 
             generateMac();

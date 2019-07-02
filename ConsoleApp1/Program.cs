@@ -54,7 +54,7 @@ namespace ConsoleApp1
             }
 
             Console.WriteLine("### SUBSCRIBING TO TOPIC '/device' ###");
-            await mqttClient.SubscribeAsync(new TopicFilterBuilder().WithTopic("/device").Build());
+            await mqttClient.SubscribeAsync(new TopicFilterBuilder().WithTopic("/Device").Build());
 
             mqttClient.UseDisconnectedHandler(async e =>
             {
@@ -83,12 +83,29 @@ namespace ConsoleApp1
                 //Console.WriteLine();
 
                 /* JSON SERIALIZE/DESERIALIZE */
+                /**
+                 *"{  \"metricDate\" : \" " + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") 
+                    + "\", \"name\" : \"" + name
+                    + "\", \"macAddress\" : \"" + macAddress
+                    + "\", \"deviceType\" : \"" + type 
+                    + "\", \"metricValue\" : \"" + metric + "\"}"; 
+                 */
+
                 dynamic json = JsonConvert.DeserializeObject(Encoding.UTF8.GetString(e.ApplicationMessage.Payload));
-                Random rand = new Random();
-                string mac = rand.Next(0, 10000).ToString();
-                int value = rand.Next(0, 100);
-                //string mac = json.macAddress;
-                //int value = json.metricValue;
+
+                string name = json.name.ToString();
+                string metricDate = json.metricDate.ToString();
+                string mac = json.macAddress.ToString();
+                string deviceType = json.deviceType.ToString();
+                int value;
+                if (deviceType == "gpsSensor")
+                {
+                    value = 0;
+                } else
+                {
+                    value = json.metricValue;
+                }
+
                 if (hashtable.ContainsKey(mac))
                 {
                     hashtable[mac] = hashtable[mac]+value;

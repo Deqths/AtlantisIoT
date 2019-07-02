@@ -160,7 +160,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.SendTimer = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.MetricsTimer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.beeperBindingSource)).BeginInit();
@@ -2283,18 +2287,57 @@
             this.label11.Text = "label2";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // timer1
+            // SendTimer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.SendTimer.Enabled = true;
+            this.SendTimer.Interval = 1000;
+            this.SendTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(21, 524);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(109, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Start";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(159, 524);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(109, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Stop";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(295, 524);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(109, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Register";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // MetricsTimer
+            // 
+            this.MetricsTimer.Enabled = true;
+            this.MetricsTimer.Interval = 1000;
+            this.MetricsTimer.Tick += new System.EventHandler(this.MetricsTimer_Tick);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1088, 521);
+            this.ClientSize = new System.Drawing.Size(1088, 559);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -2456,7 +2499,7 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer SendTimer;
         private System.Windows.Forms.BindingSource presenceSensorBindingSource;
         private System.Windows.Forms.BindingSource temperatureSensorBindingSource;
         private System.Windows.Forms.BindingSource atmPressureSensorBindingSource;
@@ -2467,6 +2510,10 @@
         private System.Windows.Forms.BindingSource cO2SensorBindingSource;
         private System.Windows.Forms.BindingSource gpsSensorBindingSource;
         private System.Windows.Forms.BindingSource soundLevelSensorBindingSource;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Timer MetricsTimer;
     }
 }
 

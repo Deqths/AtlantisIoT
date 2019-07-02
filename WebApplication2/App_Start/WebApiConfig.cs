@@ -19,6 +19,12 @@ namespace WebApplication2
                 routeTemplate: "v1/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Routes.MapHttpRoute(
+                name: "Telemetry",
+                routeTemplate: "v1/Device/{id}/Telemetry",
+                defaults: new { controller = "Device", action = "Telemetry" }
+            );
         }
     }
 }

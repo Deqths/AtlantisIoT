@@ -33,13 +33,29 @@ namespace Devices
         public string Metric { get { return metric; } set { metric = value; OnPropertyChanged(Metric);  } }
         // Defines if the Device is sending metrics or not
         public bool sendState = false;     
-        public bool SendState { get { return sendState; } set { SendState = value; OnPropertyChanged(SendState.ToString()); } }
+        public bool SendState { get { return sendState; } set { sendState = value; OnPropertyChanged(sendState.ToString()); } }
         // Defines if the Device is sending metrics or not
         public bool power = true;     
         public bool Power { get { return power; } set { power = value; OnPropertyChanged(Power.ToString()); } }
         // Static Random for all instances
         protected static Random rand = new Random();
 
+        public bool MQTTReady = false;
+        public IMqttClient MQTTClient = null;
+
+        public enum Types
+        {
+            presenceSensor,
+            temperatureSensor,
+            brightnessSensor,
+            atmosphericPressureSensor,
+            humiditySensor,
+            soundLevelSensor,
+            gpsSensor,
+            co2Sensor,
+            ledDevice,
+            beeperDevice
+        }
 
         // Property change notification handling
         public event PropertyChangedEventHandler PropertyChanged;
@@ -48,6 +64,68 @@ namespace Devices
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
+
+        //MQTT
+        public async Task InitializeMQTT()
+        {
+            var factory = new MqttFactory();
+            MQTTClient = factory.CreateMqttClient();
+            var options = new MqttClientOptionsBuilder()
+                .WithTcpServer("127.0.0.1", 1883) // Port is optional
+                .Build();
+            try
+            {
+                await MQTTClient.ConnectAsync(options);
+                await MQTTClient.SubscribeAsync(new TopicFilterBuilder().WithTopic("/" + macAddress).Build());
+                MQTTReady = true;
+    }
+            catch
+            {
+                Console.WriteLine("### CONNECTION OR SUBSCRUPTION FAILED ###");
+                MQTTReady = false;
+            }
+
+            MQTTClient.UseDisconnectedHandler(async e =>
+            {
+                Console.WriteLine("### DISCONNECTED FROM SERVER ###");
+                await Task.Delay(TimeSpan.FromSeconds(5));
+
+                try
+                {
+                    await MQTTClient.ConnectAsync(options);
+                    await MQTTClient.SubscribeAsync(new TopicFilterBuilder().WithTopic("/device").Build());
+                }
+                catch
+                {
+                    Console.WriteLine("### RECONNECTING FAILED ###");
+                }
+            });
+            MQTTClient.UseApplicationMessageReceivedHandler(async e =>
+            {
+                //Console.WriteLine("### RECEIVED APPLICATION MESSAGE ###");
+                //Console.WriteLine($"+ Other = {e.ApplicationMessage}");
+                //Console.WriteLine($"+ Topic = {e.ApplicationMessage.Topic}");
+                //Console.WriteLine($"+ Payload = {Encoding.UTF8.GetString(e.ApplicationMessage.Payload)}");
+                //Console.WriteLine($"+ QoS = {e.ApplicationMessage.QualityOfServiceLevel}");
+                //Console.WriteLine($"+ Retain = {e.ApplicationMessage.Retain}");
+                //Console.WriteLine();
+
+                /* JSON SERIALIZE/DESERIALIZE */
+                dynamic json = JsonConvert.DeserializeObject(Encoding.UTF8.GetString(e.ApplicationMessage.Payload));
+                if(json.action == "rename")
+                {
+                    Name = json.name;
+                } else if (json.action == "off")
+                {
+                    Power = false;
+                } else if (json.action == "on")
+                {
+                    Power = true;
+                }
+            });
+
+        }
+
 
         /**
          * 
@@ -62,13 +140,12 @@ namespace Devices
         public bool RegisterDevice()
         {
             WebRequest request = WebRequest.Create("http://localhost:59885/v1/device");
-            request.Credentials = CredentialCache.DefaultCredentials;
             request.ContentType = "application/json";
             request.Method = "POST";
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
-                string json = "{ \"ID\" : \" "+this.id+"\", \"Name\" : \""+name+ "\", \"deviceType\" : \""+type+"\"}";
+                string json = "{ \"ID\" : \" "+id+"\", \"Name\" : \""+name+ "\", \"deviceType\" : \""+type+"\"}";
 
                 streamWriter.Write(json);
                 streamWriter.Flush();
@@ -78,25 +155,86 @@ namespace Devices
             using (var streamReader = new StreamReader(response.GetResponseStream()))
             {
                 var responseText = streamReader.ReadToEnd();
-                Console.WriteLine(responseText);
+                dynamic json = JsonConvert.DeserializeObject(responseText);
+                ID = json.id;
+                Name = json.name;
+                SendState = true;
+            }
 
-                //Now you have your response.
-                //or false depending on information in the response     
+            if (sendState == true)
+            {
+                InitializeMQTT();
             }
             return true;
         }
 
-        // Starts the process of sending metrics
-        public void MetricStart()
+        // Send metrics
+        public async Task SendMetricsAsync()
         {
+            if (MQTTReady)
+            {
+                string telemetry = "{  \"metricDate\" : \" " + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") 
+                    + "\", \"name\" : \"" + name
+                    + "\", \"macAddress\" : \"" + macAddress
+                    + "\", \"deviceType\" : \"" + type 
+                    + "\", \"metricValue\" : \"" + metric + "\"}";
 
+                var message = new MqttApplicationMessageBuilder()
+                    .WithTopic("/Device")
+                    .WithPayload(telemetry)
+                    .Build();
+
+                await MQTTClient.PublishAsync(message);
+            } else
+            {
+                if (SendState)
+                {
+                    InitializeMQTT();
+                }
+                else
+                {
+                    RegisterDevice();
+                }
+            }
         }
 
-        // Stops the process of sending metrics
-        public void MetricStop()
+        // Send metrics
+        public async Task SendMetricsHTTP()
         {
-            
+            if (MQTTReady)
+            {
+                WebRequest request = WebRequest.Create("http://localhost:59885/v1/device/"+id+"/telemetry");
+                request.ContentType = "application/json";
+                request.Method = "POST";
+
+                using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+                {
+
+                    //string json = "{ \"metricDate\" : \" " + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") + "\", \"deviceType\" : \"" + type + "\", \"metricValue\" : \"" + metric + "\"}";
+
+                    string telemetry = "{  \"metricDate\" : \" " + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ")
+                        + "\", \"name\" : \"" + name
+                        + "\", \"macAddress\" : \"" + macAddress
+                        + "\", \"deviceType\" : \"" + type
+                        + "\", \"metricValue\" : \"" + metric + "\"}";
+
+                    streamWriter.Write(telemetry);
+                    streamWriter.Flush();
+                }
+            }
+            else
+            {
+                if (SendState)
+                {
+                    InitializeMQTT();
+                }
+                else
+                {
+                    RegisterDevice();
+                }
+            }
         }
+
         public void generateMac()
         {
             const string chars = "ABCDEF0123456789";
@@ -115,14 +253,12 @@ namespace Devices
         {
             if (power)
             {
-                generateMetric();
                 if (sendState)
                 {
-                    Console.WriteLine("Sending metrics");
+                    SendMetricsAsync();
                 } else
                 {
-                    RegisterDevice();
-                    Console.WriteLine("Trying to register");
+                    //RegisterDevice();
                 }
             }
         }

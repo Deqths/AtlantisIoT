@@ -13,7 +13,7 @@ namespace Devices
         {
             id = null;
             name = "Beeper";
-            type = "Beeper";
+            type = Types.beeperDevice.ToString();
             metric = "0";
 
             generateMac();

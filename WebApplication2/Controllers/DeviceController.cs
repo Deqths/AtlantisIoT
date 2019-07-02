@@ -6,37 +6,43 @@ using System.Net.Http;
 using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Http.Results;
+using WebApplication2.Models;
+using static WebApplication2.Models.MQTTuser;
+using MQTTnet;
+using MQTTnet.Client;
+using System.Threading.Tasks;
+using MQTTnet.Client.Options;
 
-namespace WebApplication2.Controllers
+namespace WebApplication2.Controllers 
 {
     public class DeviceController : ApiController
     {
-        // GET: api/Device
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET: api/Device/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
         // POST: api/Device
-        public JsonResult<Device> Post([FromBody]string value)
+        public Device Post(Device device)
         {
-            return Json(new { name = "ok", id = "okok" })
+            device.id = Guid.NewGuid().ToString();
+            device.name = "Default" + device.deviceType.ToString();
+            return device;
+
         }
 
-        // PUT: api/Device/5
-        public void Put(int id, [FromBody]string value)
+        // POST: v1/{id}/Telemetry
+        [HttpPost]
+        [Route("v1/device/{id}/Telemetry")]
+        [ActionName("Telemetry")]
+        public async Task<string> TelemetryAsync(int id, Telemetry value)
         {
+            await InitializeMQTT();
+            await publish(value);
+
+            return "ok";
         }
 
-        // DELETE: api/Device/5
-        public void Delete(int id)
-        {
-        }
+        //public async Task TelemetryAsync(int id, Telemetry value)
+        //{
+        //    await InitializeMQTT();
+        //    await publish(value);
+        //}
+
     }
 }

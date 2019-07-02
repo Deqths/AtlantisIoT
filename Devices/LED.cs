@@ -12,7 +12,7 @@ namespace Devices
         {
             id = null;
             name = "LED";
-            type = "LED";
+            type = Types.ledDevice.ToString();
             metric = "0";
 
             generateMac();

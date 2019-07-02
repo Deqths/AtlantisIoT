@@ -12,7 +12,7 @@ namespace Devices
         {
             id = null;
             name = "SoundLevelSensor";
-            type = "SoundLevel Sensor";
+            type = Types.soundLevelSensor.ToString();
             metric = "0";
 
             generateMac();
