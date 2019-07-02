@@ -1,6 +1,7 @@
 ﻿using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Client.Options;
+using MQTTnet.Client.Receiving;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Devices
         public string Type { get { return type; } }
         // Metrics percieveed (or State for non-sensors)
         public string metric;      
-        public string Metric { get { return metric; } set { metric = value; OnPropertyChanged(Metric);  } }
+        public string Metric { get { return metric; } set { metric = value; OnPropertyChanged(Metric.ToString());  } }
         // Defines if the Device is sending metrics or not
         public bool sendState = false;     
         public bool SendState { get { return sendState; } set { sendState = value; OnPropertyChanged(sendState.ToString()); } }
@@ -71,6 +72,7 @@ namespace Devices
             var factory = new MqttFactory();
             MQTTClient = factory.CreateMqttClient();
             var options = new MqttClientOptionsBuilder()
+
                 .WithTcpServer("127.0.0.1", 1883) // Port is optional
                 .Build();
             try
@@ -85,47 +87,19 @@ namespace Devices
                 MQTTReady = false;
             }
 
-            MQTTClient.UseDisconnectedHandler(async e =>
-            {
-                Console.WriteLine("### DISCONNECTED FROM SERVER ###");
-                await Task.Delay(TimeSpan.FromSeconds(5));
-
-                try
-                {
-                    await MQTTClient.ConnectAsync(options);
-                    await MQTTClient.SubscribeAsync(new TopicFilterBuilder().WithTopic("/device").Build());
-                }
-                catch
-                {
-                    Console.WriteLine("### RECONNECTING FAILED ###");
-                }
-            });
             MQTTClient.UseApplicationMessageReceivedHandler(async e =>
             {
-                //Console.WriteLine("### RECEIVED APPLICATION MESSAGE ###");
-                //Console.WriteLine($"+ Other = {e.ApplicationMessage}");
-                //Console.WriteLine($"+ Topic = {e.ApplicationMessage.Topic}");
-                //Console.WriteLine($"+ Payload = {Encoding.UTF8.GetString(e.ApplicationMessage.Payload)}");
-                //Console.WriteLine($"+ QoS = {e.ApplicationMessage.QualityOfServiceLevel}");
-                //Console.WriteLine($"+ Retain = {e.ApplicationMessage.Retain}");
-                //Console.WriteLine();
-
-                /* JSON SERIALIZE/DESERIALIZE */
-                dynamic json = JsonConvert.DeserializeObject(Encoding.UTF8.GetString(e.ApplicationMessage.Payload));
-                if(json.action == "rename")
+                string k = Encoding.UTF8.GetString(e.ApplicationMessage.Payload);
+                if (k == "on")
                 {
-                    Name = json.name;
-                } else if (json.action == "off")
+                    Metric = "1";
+                }
+                else if (k == "off")
                 {
-                    Power = false;
-                } else if (json.action == "on")
-                {
-                    Power = true;
+                    Metric = "0";
                 }
             });
-
         }
-
 
         /**
          * 
@@ -251,6 +225,7 @@ namespace Devices
 
         public void tick()
         {
+
             if (power)
             {
                 if (sendState)

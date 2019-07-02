@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MQTTnet.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,8 +16,8 @@ namespace Devices
             name = "Beeper";
             type = Types.beeperDevice.ToString();
             metric = "0";
-
             generateMac();
+            macAddress = "00:00:00:00:00:00";
         }
     }
 }
