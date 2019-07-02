@@ -8,13 +8,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class JMSSender
+    static class JMSSender
     {
-        private const string URI = "tcp://192.168.9.129:61616";
-        private const string RequestInfo = "RequestInfo";
-        private const string Answer = "Answer";
-        private const string Metrics = "Metrics";
-        private const string Command = "Command";
+        private const string URI = "tcp://192.168.43.203:61616";
 
         public static void Send(string message, string queue)
         {

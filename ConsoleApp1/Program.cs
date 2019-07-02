@@ -10,6 +10,7 @@ using Nito.AsyncEx;
 using Newtonsoft.Json;
 using System.Threading;
 using System.Collections;
+using static ConsoleApp1.JMSSender;
 
 namespace ConsoleApp1
 {
@@ -64,7 +65,7 @@ namespace ConsoleApp1
                 try
                 {
                     await mqttClient.ConnectAsync(options);
-                    await mqttClient.SubscribeAsync(new TopicFilterBuilder().WithTopic("/device").Build());
+                    await mqttClient.SubscribeAsync(new TopicFilterBuilder().WithTopic("/Device").Build());
                 }
                 catch
                 {
@@ -74,65 +75,63 @@ namespace ConsoleApp1
 
             mqttClient.UseApplicationMessageReceivedHandler(async e =>
             {
-                //Console.WriteLine("### RECEIVED APPLICATION MESSAGE ###");
-                //Console.WriteLine($"+ Other = {e.ApplicationMessage}");
-                //Console.WriteLine($"+ Topic = {e.ApplicationMessage.Topic}");
-                //Console.WriteLine($"+ Payload = {Encoding.UTF8.GetString(e.ApplicationMessage.Payload)}");
-                //Console.WriteLine($"+ QoS = {e.ApplicationMessage.QualityOfServiceLevel}");
-                //Console.WriteLine($"+ Retain = {e.ApplicationMessage.Retain}");
-                //Console.WriteLine();
-
-                /* JSON SERIALIZE/DESERIALIZE */
-                /**
-                 *"{  \"metricDate\" : \" " + DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ") 
-                    + "\", \"name\" : \"" + name
-                    + "\", \"macAddress\" : \"" + macAddress
-                    + "\", \"deviceType\" : \"" + type 
-                    + "\", \"metricValue\" : \"" + metric + "\"}"; 
-                 */
-
                 dynamic json = JsonConvert.DeserializeObject(Encoding.UTF8.GetString(e.ApplicationMessage.Payload));
+                string act = json.action.ToString();
+                if (act == "metric")
+                {
 
-                string name = json.name.ToString();
-                string metricDate = json.metricDate.ToString();
-                string mac = json.macAddress.ToString();
-                string deviceType = json.deviceType.ToString();
-                int value;
-                if (deviceType == "gpsSensor")
+                    string name = json.name.ToString();
+                    string metricDate = json.metricDate.ToString();
+                    string mac = json.macAddress.ToString();
+                    string deviceType = json.deviceType.ToString();
+                    int value;
+                    if (deviceType == "gpsSensor")
+                    {
+                        value = 0;
+                    }
+                    else
+                    {
+                        value = json.metricValue;
+                    }
+
+                    Console.WriteLine($"+ Device = {mac}");
+                    Console.WriteLine($"+ Metric = {value}");
+                    if (hashtable.ContainsKey(mac))
+                    {
+                        hashtable[mac] = hashtable[mac] + value;
+
+
+                    }
+                    else
+                    {
+                        hashtable.Add(mac, value);
+                    }
+
+                    if (average.ContainsKey(mac))
+                    {
+                        averageEntries[mac] = averageEntries[mac] + 1;
+                        average[mac] = (hashtable[mac] / averageEntries[mac]);
+                    }
+                    else
+                    {
+                        average.Add(mac, value);
+                        averageEntries.Add(mac, 1);
+
+                    }
+
+                    JMSSender.Send(mac, "Jms/AuthDevice");
+                    JMSSender.Send(JsonConvert.SerializeObject(json), "");
+
+                    //Console.WriteLine($"+ sum = {hashtable[mac]}");
+                    //Console.WriteLine($"+ sum = {averageEntries[mac]}");
+                    //Console.WriteLine($"+ avg = {average[mac]}");
+                } else if (act == "Register")
                 {
-                    value = 0;
-                } else
+                    JMSSender.Send(json.mac.ToString());
+                } else if (act == "")
                 {
-                    value = json.metricValue;
+
                 }
-
-                if (hashtable.ContainsKey(mac))
-                {
-                    hashtable[mac] = hashtable[mac]+value;
-                    
-
-                } else
-                {
-                    hashtable.Add(mac, value);
-                }
-
-                if (average.ContainsKey(mac))
-                {
-                    averageEntries[mac] = averageEntries[mac] + 1;
-                    average[mac] = (hashtable[mac] / averageEntries[mac]);
-                }
-                else
-                {
-                    average.Add(mac, value);
-                    averageEntries.Add(mac, 1);
-                    
-                }
-
-                Console.WriteLine($"+ Device = {mac}");
-                Console.WriteLine($"+ Metric = {value}");
-                Console.WriteLine($"+ sum = {hashtable[mac]}");
-                Console.WriteLine($"+ sum = {averageEntries[mac]}");
-                Console.WriteLine($"+ avg = {average[mac]}");
             });
 
         }
